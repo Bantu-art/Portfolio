@@ -66,7 +66,7 @@
     border-radius: 5px;
   }
   
-  /* Responsive Navigation (Optional) */
+  /* Responsive Navigation */
   @media (max-width: 768px) {
     .nav-links {
       flex-direction: column;
@@ -84,5 +84,71 @@
   
     .logo {
       font-size: 1.2em;
+    }
+  }
+  /* Hero Section Styling with Background Video */
+.hero {
+    position: relative; /* Required for absolute positioning of content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent overflow of the video */
+    color: #DDE8F0; /* Light seawave color for contrast */
+    text-align: center;
+  }
+  
+  .hero-video {
+    position: absolute; /* Position video behind content */
+    top: 50%; /* Center video vertically */
+    left: 50%; /* Center video horizontally */
+    min-width: 100%; /* Ensure video covers full width */
+    min-height: 100%; /* Ensure video covers full height */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    transform: translate(-50%, -50%); /* Center video */
+    z-index: -1; /* Send video behind the text */
+  }
+  
+  /* Hero Content */
+  .hero-content {
+    max-width: 800px;
+    padding: 1em;
+  }
+  
+  .hero h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  .hero p {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+  }
+  
+  /* Call-to-Action Button */
+  .btn {
+    display: inline-block;
+    background-color: #018ABD; /* Medium seawave color */
+    color: #DDE8F0;
+    padding: 0.75em 1.5em;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn:hover {
+    background-color: #004581; /* Darker seawave color on hover */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2em;
+    }
+  
+    .hero p {
+      font-size: 1em;
     }
   }
