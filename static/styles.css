@@ -1,0 +1,88 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header Styling */
+  header {
+    position: sticky;
+    top: 0;
+    background-color: #010102; /* Seawave dark blue */
+    color: #DDE8F0; /* Seawave light */
+    padding: 1em 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 1em;
+  }
+  
+  /* Logo Styling */
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #DDE8F0;
+  }
+  
+  /* Navigation Links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5em;
+  }
+  
+  .nav-links li a {
+    color: #DDE8F0; /* Light color for contrast */
+    text-decoration: none;
+    padding: 0.5em;
+    font-size: 1em;
+    transition: color 0.3s, background-color 0.3s;
+  }
+  
+  /* Hover Effect */
+  .nav-links li a:hover {
+    color: #004581; /* Darker color */
+    background-color: #092833; /* Medium seawave color for highlight */
+    border-radius: 5px;
+  }
+  
+  /* Active Link Effect */
+  .nav-links li a.active {
+    background-color: #018ABD; /* Seawave medium blue */
+    border-radius: 5px;
+  }
+  
+  /* Responsive Navigation (Optional) */
+  @media (max-width: 768px) {
+    .nav-links {
+      flex-direction: column;
+      background-color: #004581; /* Same as header background */
+      position: absolute;
+      top: 100%;
+      right: 0;
+      width: 100%;
+      display: none;
+    }
+  
+    .nav-links.show {
+      display: flex;
+    }
+  
+    .logo {
+      font-size: 1.2em;
+    }
+  }
