@@ -2,14 +2,21 @@ package portfolio
 
 import (
 	"html/template"
+	"log"
 	"net/http"
 )
 
 func HomePage(w http.ResponseWriter, r *http.Request) {
-	tmpl, err := template.ParseFiles("templates/index.html") // Make sure "index.html" is in the same directory
+	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
-		http.Error(w, "Unable to load template", http.StatusInternalServerError)
+		TemplateError(w, r, "index.html")
 		return
 	}
-	tmpl.Execute(w, nil)
+
+	err = tmpl.Execute(w, nil)
+	if err != nil {
+		log.Printf("Template execution error: %v", err)
+		InternalServerError(w, r)
+		return
+	}
 }

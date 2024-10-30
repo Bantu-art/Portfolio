@@ -6,18 +6,28 @@ import (
 
 	portfolio "portfolio/cv"
 )
-
 func main() {
-	// Handle the homepage route
-	http.HandleFunc("/", portfolio.HomePage)
+	mux := http.NewServeMux()
 
-	// Serve static files like CSS, JavaScript, and images
-	fs := http.FileServer(http.Dir("static")) // Folder where static files are located
-	http.Handle("/static/", http.StripPrefix("/static/", fs))
+	// Handle the homepage route
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			portfolio.NotFound(w, r)
+			return
+		}
+		portfolio.HomePage(w, r)
+	})
+
+	// Serve static files
+	fs := http.FileServer(http.Dir("static"))
+	mux.Handle("/static/", http.StripPrefix("/static/", fs))
+
+	// Wrap mux with error handling middleware
+	handler := portfolio.ErrorMiddleware(mux)
 
 	// Start the server
 	log.Println("Starting server on http://localhost:8080")
-	err := http.ListenAndServe(":8080", nil)
+	err := http.ListenAndServe(":8080", handler)
 	if err != nil {
 		log.Fatal("Server failed:", err)
 	}
