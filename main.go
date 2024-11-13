@@ -3,10 +3,15 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
+	"strconv"
 
 	portfolio "portfolio/cv"
 )
+
 func main() {
+	iport := port()
+	port := ":" + strconv.Itoa(iport)
 	mux := http.NewServeMux()
 
 	// Handle the homepage route
@@ -27,8 +32,25 @@ func main() {
 
 	// Start the server
 	log.Println("Starting server on http://localhost:8080")
-	err := http.ListenAndServe(":8080", handler)
+	err := http.ListenAndServe(port, handler)
 	if err != nil {
 		log.Fatal("Server failed:", err)
 	}
+}
+
+func port() int {
+	defaultPort := 9000
+	portStr := os.Getenv("PORT")
+	var port int
+
+	if portStr != "" {
+		var err error
+		port, err = strconv.Atoi(portStr)
+		if err != nil {
+			port = defaultPort // Use default if conversion fails
+		}
+	} else {
+		port = defaultPort
+	}
+	return port
 }
