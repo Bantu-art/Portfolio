@@ -22,6 +22,7 @@ func main() {
 		}
 		portfolio.HomePage(w, r)
 	})
+	
 
 	// Serve static files
 	fs := http.FileServer(http.Dir("static"))
@@ -31,7 +32,7 @@ func main() {
 	handler := portfolio.ErrorMiddleware(mux)
 
 	// Start the server
-	log.Println("Starting server on http://localhost:8080")
+	log.Printf("Starting server on http://localhost:%d\n", iport)
 	err := http.ListenAndServe(port, handler)
 	if err != nil {
 		log.Fatal("Server failed:", err)

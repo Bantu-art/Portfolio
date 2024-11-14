@@ -934,7 +934,7 @@
   }
   
   .contact-card {
-    background: rgba(73, 165, 211, 0.9);
+    background: #DDE8F0;
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 3rem;
@@ -972,7 +972,7 @@
   
   .contact-info p {
     margin-bottom: 2rem;
-    color: #e8f6f8;
+    color: #149eb1;
   }
   
   .info-item {
@@ -1105,7 +1105,7 @@
   }
   
   .social-links a {
-    background: #48cae4;
+    background: black;
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 5px;
@@ -1244,3 +1244,5 @@
                 font-size: 1.5rem;
             }
         }
+
+        
